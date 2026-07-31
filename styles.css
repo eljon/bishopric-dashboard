@@ -235,6 +235,47 @@ body::before {
 .card-front-members .avatar { margin-left: -6px; }
 .card-front-members .avatar:first-child { margin-left: 0; }
 
+/* Advance-to-next-step button (appears on hover; always shown on touch) */
+.card-next {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(6px) scale(0.9);
+  transition: opacity 0.16s ease, transform 0.16s ease, background 0.15s ease;
+  box-shadow: 0 2px 6px rgba(9, 30, 66, 0.35);
+}
+.card-next svg { width: 16px; height: 16px; fill: currentColor; }
+.card:hover .card-next { opacity: 1; transform: translateX(0) scale(1); }
+.card-next:hover { background: var(--accent-hover); }
+.card-next:active { transform: scale(0.86); }
+@media (hover: none) { .card-next { opacity: 0.9; transform: none; } }
+
+/* The fixed-position clone that flies between columns */
+.fly-clone {
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: 0 8px 20px rgba(9, 30, 66, 0.3);
+  will-change: transform;
+}
+.fly-clone .card-next { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card-next { transition: none; }
+}
+
 /* Front-of-card checkitem (the candidate) */
 .card-checkitem {
   display: flex;

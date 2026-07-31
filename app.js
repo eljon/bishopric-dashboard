@@ -379,7 +379,101 @@ function renderCard(card, list) {
     li.appendChild(badges);
   }
 
+  // Advance-to-next-step button (hidden on the last list — nowhere to go).
+  const idx = board.lists.indexOf(list);
+  if (idx > -1 && idx < board.lists.length - 1) {
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'card-next';
+    nextBtn.innerHTML = iconArrowRight();
+    nextBtn.title = `Move to “${board.lists[idx + 1].title}”`;
+    nextBtn.setAttribute('aria-label', nextBtn.title);
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); advanceCard(card.id); });
+    li.appendChild(nextBtn);
+  }
+
   return li;
+}
+
+/* ----------------------- Advance to next step (animated) ----------------------- */
+function advanceCard(cardId) {
+  const found = findCard(cardId);
+  if (!found) return;
+  const { card, list } = found;
+  const idx = board.lists.indexOf(list);
+  const next = board.lists[idx + 1];
+  if (!next) return;
+
+  // FLIP "First": where the card is right now (viewport coords).
+  const srcEl = boardEl.querySelector(`.card[data-card-id="${cardId}"]`);
+  const first = srcEl ? srcEl.getBoundingClientRect() : null;
+
+  // Move data → bottom of the next list, then re-render.
+  list.cards = list.cards.filter(c => c.id !== cardId);
+  next.cards.push(card);
+  save();
+  render();
+
+  // Bring the destination into view (instant) so the landing spot is visible.
+  const destCol = boardEl.querySelector(`.list[data-list-id="${next.id}"]`);
+  const destUl = boardEl.querySelector(`.cards[data-list-id="${next.id}"]`);
+  if (destCol) ensureColumnVisible(destCol);
+  if (destUl) destUl.scrollTop = destUl.scrollHeight;
+
+  flyCardTo(cardId, first);
+}
+
+// Instantly nudge the horizontal board scroll so a column is fully visible.
+function ensureColumnVisible(colEl) {
+  const cr = colEl.getBoundingClientRect();
+  const br = boardEl.getBoundingClientRect();
+  if (cr.right > br.right) boardEl.scrollLeft += (cr.right - br.right) + 12;
+  else if (cr.left < br.left) boardEl.scrollLeft -= (br.left - cr.left) + 12;
+}
+
+// Animate the card from its old spot to its new spot with an inertial ease-out.
+// Uses a fixed-position clone so it isn't clipped by the columns' scroll areas.
+function flyCardTo(cardId, first) {
+  const el = boardEl.querySelector(`.card[data-card-id="${cardId}"]`);
+  if (!el || !first) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const last = el.getBoundingClientRect();
+  const dx = last.left - first.left;
+  const dy = last.top - first.top;
+  if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+
+  const clone = el.cloneNode(true);
+  clone.classList.add('fly-clone');
+  Object.assign(clone.style, {
+    position: 'fixed',
+    left: first.left + 'px',
+    top: first.top + 'px',
+    width: first.width + 'px',
+    height: first.height + 'px',
+    margin: '0',
+    transform: 'translate(0, 0)',
+    transition: 'none',
+  });
+  document.body.appendChild(clone);
+  el.style.visibility = 'hidden';        // reserve the real slot; reveal on landing
+
+  void clone.offsetWidth;                // force reflow so the start state sticks
+  requestAnimationFrame(() => {
+    // Inertial glide: fast start, long gentle deceleration (easeOutQuint-ish).
+    clone.style.transition =
+      'transform 640ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease-out';
+    clone.style.boxShadow = '0 18px 40px rgba(9, 30, 66, 0.35)';
+    clone.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+
+  let done = false;
+  const finish = () => {
+    if (done) return; done = true;
+    clone.remove();
+    el.style.visibility = '';
+  };
+  clone.addEventListener('transitionend', (ev) => { if (ev.propertyName === 'transform') finish(); });
+  setTimeout(finish, 850);               // safety net if transitionend is missed
 }
 
 /* ----------------------- Drag & drop ----------------------- */
@@ -798,6 +892,7 @@ function iconClock() { return '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1
 function iconEye() { return '<svg viewBox="0 0 24 24"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 110-8 4 4 0 010 8zm0-6a2 2 0 100 4 2 2 0 000-4z"/></svg>'; }
 function iconDesc() { return '<svg viewBox="0 0 24 24"><path d="M4 5h16v2H4V5zm0 4h16v2H4V9zm0 4h10v2H4v-2zm0 4h16v2H4v-2z"/></svg>'; }
 function iconCheck() { return '<svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.4z"/></svg>'; }
+function iconArrowRight() { return '<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>'; }
 
 /* ============================================================
    Shared backend — Firebase Firestore realtime sync
