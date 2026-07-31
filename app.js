@@ -57,11 +57,10 @@ function avatarEl(name) {
 
 /* ----------------------- Seed data ----------------------- */
 function seed() {
-  const mk = (title, opts = {}) => ({
+  const mk = (position, opts = {}) => ({
     id: uid(),
-    title,
-    candidate: opts.candidate || '',
-    candidateDone: !!opts.candidateDone,
+    position,               // the calling / position (subtitle)
+    name: opts.name || '',  // the proposed person (card headline)
     due: opts.due || null,
     watching: !!opts.watching,
     description: opts.description || '',
@@ -86,45 +85,45 @@ function seed() {
         mk('Teachers\' Quorum Secretary', { checklist: cl(0) }),
       ]},
       { id: uid(), title: 'For Discussion', cards: [
-        mk('Nursery Teacher', { candidate: 'Krizia Cureg Dela Rosa', due: 3, checklist: cl(2), members: ['Eljon Serrano'] }),
-        mk('Assistant Clerk - Records', { candidate: 'Jerson Danao', due: 1, watching: true, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Nursery Teacher', { name: 'Krizia Cureg Dela Rosa', due: 3, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Assistant Clerk - Records', { name: 'Jerson Danao', due: 1, watching: true, checklist: cl(2), members: ['Eljon Serrano'] }),
       ]},
       { id: uid(), title: 'Contacting', cards: [
-        mk('Ward Mission Leader', { candidate: '', due: 1, description: 'Coordinate with elders quorum.', checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Ward Mission Leader', { name: '', due: 1, description: 'Coordinate with elders quorum.', checklist: cl(2), members: ['Eljon Serrano'] }),
       ]},
       { id: uid(), title: 'For Interview', cards: [
-        mk('Sunday School 2nd Counselor', { candidate: 'Kai Serrano', description: 'x', checklist: cl(2), members: ['Jasmin Serrano'] }),
-        mk('Relief Society Teacher', { candidate: 'Elisa Ruiz', checklist: cl(2), members: ['Jasmin Serrano'] }),
-        mk('Ward History Specialist', { candidate: 'Justine Matt', checklist: cl(2), members: ['Jethro Moran'] }),
-        mk('Sunday School Teacher', { candidate: 'Regine Villaruel', due: 1, checklist: cl(2), members: ['Jethro Moran'] }),
-        mk('Gatherers of Light 2nd Counselor', { candidate: 'Czarina Trinidad', due: 1, watching: true, checklist: cl(2), members: ['Eljon Serrano'] }),
-        mk('Young Women Teacher', { candidate: 'Mean Magalang', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
-        mk('Sunday School Teacher - Married', { candidate: 'Rowena Cruz', checklist: cl(2) }),
-        mk('Elders Quorum Instructor', { candidate: 'Marc Villaluna', checklist: cl(1) }),
-        mk('Primary Music Leader', { candidate: 'Hannah Reyes', checklist: cl(2) }),
-        mk('Ward Organist', { candidate: 'Paolo Mendoza', checklist: cl(1) }),
+        mk('Sunday School 2nd Counselor', { name: 'Kai Serrano', description: 'x', checklist: cl(2), members: ['Jasmin Serrano'] }),
+        mk('Relief Society Teacher', { name: 'Elisa Ruiz', checklist: cl(2), members: ['Jasmin Serrano'] }),
+        mk('Ward History Specialist', { name: 'Justine Matt', checklist: cl(2), members: ['Jethro Moran'] }),
+        mk('Sunday School Teacher', { name: 'Regine Villaruel', due: 1, checklist: cl(2), members: ['Jethro Moran'] }),
+        mk('Gatherers of Light 2nd Counselor', { name: 'Czarina Trinidad', due: 1, watching: true, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Young Women Teacher', { name: 'Mean Magalang', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Sunday School Teacher - Married', { name: 'Rowena Cruz', checklist: cl(2) }),
+        mk('Elders Quorum Instructor', { name: 'Marc Villaluna', checklist: cl(1) }),
+        mk('Primary Music Leader', { name: 'Hannah Reyes', checklist: cl(2) }),
+        mk('Ward Organist', { name: 'Paolo Mendoza', checklist: cl(1) }),
       ]},
       { id: uid(), title: 'For Sustaining', cards: [
-        mk('Disability Specialist', { candidate: 'Kathleen Barboza', due: 1, checklist: cl(2), members: ['Eljon Serrano'] }),
-        mk('Relief Society Teacher', { candidate: 'Jasmin Serrano', checklist: cl(2), members: ['Jasmin Serrano'] }),
+        mk('Disability Specialist', { name: 'Kathleen Barboza', due: 1, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Relief Society Teacher', { name: 'Jasmin Serrano', checklist: cl(2), members: ['Jasmin Serrano'] }),
       ]},
       { id: uid(), title: 'For Setting Apart', cards: [] },
       { id: uid(), title: 'For Releasing', cards: [] },
       { id: uid(), title: 'For Recording', cards: [
-        mk('Priests\' Quorum 2nd Assistant', { candidate: 'Joven Cris Matt', due: 3, checklist: cl(2), members: ['Jethro Moran'] }),
-        mk('Teachers\' Quorum 2nd Counselor', { candidate: 'Jethro Moran', checklist: cl(2), members: ['Jethro Moran'] }),
+        mk('Priests\' Quorum 2nd Assistant', { name: 'Joven Cris Matt', due: 3, checklist: cl(2), members: ['Jethro Moran'] }),
+        mk('Teachers\' Quorum 2nd Counselor', { name: 'Jethro Moran', checklist: cl(2), members: ['Jethro Moran'] }),
       ]},
       { id: uid(), title: 'Done', cards: [
-        mk('Young Men Adviser', { candidate: 'John Robin Ayo', due: 5, checklist: cl(3), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('Teachers\' Quorum Secretary', { candidate: 'Leo Domingo', due: 5, checklist: cl(3), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('Teachers\' Quorum 1st Counselor', { candidate: 'Neil Navarra', checklist: cl(2), candidateDone: true, members: ['Jasmin Serrano'] }),
-        mk('YSA Leader', { candidate: 'Trisia Talosig', due: 2, checklist: cl(2), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('Sunday School President', { candidate: 'Neil Navarra', due: 2, checklist: cl(2), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('Welfare & Self-Reliance Leader', { candidate: 'Hela Panay', due: 2, checklist: cl(2), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('RS Ministering Secretary', { candidate: 'Yolly Matuguinas', due: 2, checklist: cl(2), candidateDone: true, members: ['Eljon Serrano'] }),
-        mk('Ward Clerk', { candidate: 'Rex Aquino', checklist: cl(3), candidateDone: true }),
-        mk('Primary President', { candidate: 'Sheila Munoz', checklist: cl(3), candidateDone: true }),
-        mk('Elders Quorum President', { candidate: 'Ariel Bautista', checklist: cl(3), candidateDone: true }),
+        mk('Young Men Adviser', { name: 'John Robin Ayo', due: 5, checklist: cl(3), members: ['Eljon Serrano'] }),
+        mk('Teachers\' Quorum Secretary', { name: 'Leo Domingo', due: 5, checklist: cl(3), members: ['Eljon Serrano'] }),
+        mk('Teachers\' Quorum 1st Counselor', { name: 'Neil Navarra', checklist: cl(2), members: ['Jasmin Serrano'] }),
+        mk('YSA Leader', { name: 'Trisia Talosig', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Sunday School President', { name: 'Neil Navarra', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Welfare & Self-Reliance Leader', { name: 'Hela Panay', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('RS Ministering Secretary', { name: 'Yolly Matuguinas', due: 2, checklist: cl(2), members: ['Eljon Serrano'] }),
+        mk('Ward Clerk', { name: 'Rex Aquino', checklist: cl(3) }),
+        mk('Primary President', { name: 'Sheila Munoz', checklist: cl(3) }),
+        mk('Elders Quorum President', { name: 'Ariel Bautista', checklist: cl(3) }),
       ]},
     ],
   };
@@ -144,7 +143,7 @@ function loadLocal() {
     }
   } catch (e) { console.warn('Failed to load cached board, seeding.', e); }
   const s = seed();
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch (_) {}
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(toStorage(s))); } catch (_) {}
   return s;
 }
 
@@ -157,9 +156,9 @@ function normalize(data) {
     title: l.title || 'Untitled',
     cards: (l.cards || []).map(c => ({
       id: c.id || uid(),
-      title: c.title || 'Untitled',
-      candidate: c.candidate || '',
-      candidateDone: !!c.candidateDone,
+      // Migrate old shape (title=calling, candidate=person) → position/name.
+      position: c.position || c.title || 'Untitled',
+      name: c.name || c.candidate || '',
       due: c.due ?? null,
       watching: !!c.watching,
       description: c.description || '',
@@ -171,9 +170,22 @@ function normalize(data) {
   return data;
 }
 
+// Serialize with LEGACY-compatible fields so older snapshots (/v1, /v2), which
+// read `title` (calling) and `candidate` (person), can still render data
+// written by this newer name/position layout. New code prefers position/name.
+function toStorage(b) {
+  return {
+    ...b,
+    lists: b.lists.map(l => ({
+      ...l,
+      cards: l.cards.map(c => ({ ...c, title: c.position, candidate: c.name })),
+    })),
+  };
+}
+
 // Every mutation calls save(): cache locally AND push to the shared backend.
 function save(b = board) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(b)); }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(toStorage(b))); }
   catch (e) { console.warn('Failed to cache board.', e); }
   scheduleRemotePush();
 }
@@ -292,10 +304,7 @@ function renderCard(card, list) {
     $$('.list').forEach(l => l.classList.remove('drag-over'));
     dragState = null;
   });
-  li.addEventListener('click', (e) => {
-    if (e.target.closest('.card-checkitem')) return; // handled separately
-    openCard(card.id);
-  });
+  li.addEventListener('click', () => openCard(card.id));
 
   // Labels
   if (card.labels.length) {
@@ -310,11 +319,17 @@ function renderCard(card, list) {
     li.appendChild(labs);
   }
 
-  // Title
+  // Headline: the proposed person's NAME (falls back to a muted placeholder).
   const t = document.createElement('div');
-  t.className = 'card-title';
-  t.textContent = card.title;
+  t.className = 'card-title' + (card.name ? '' : ' unassigned');
+  t.textContent = card.name || 'Unassigned';
   li.appendChild(t);
+
+  // Subtitle: the calling / position.
+  const sub = document.createElement('div');
+  sub.className = 'card-subtitle';
+  sub.textContent = card.position;
+  li.appendChild(sub);
 
   // Badges row
   const badges = document.createElement('div');
@@ -362,26 +377,6 @@ function renderCard(card, list) {
   }
   if (card.due != null || card.watching || card.description || card.checklist.length || card.members.length) {
     li.appendChild(badges);
-  }
-
-  // Front candidate checkitem
-  if (card.candidate) {
-    const ci = document.createElement('label');
-    ci.className = 'card-checkitem' + (card.candidateDone ? ' done' : '');
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = card.candidateDone;
-    cb.addEventListener('click', (e) => e.stopPropagation());
-    cb.addEventListener('change', () => {
-      card.candidateDone = cb.checked;
-      ci.classList.toggle('done', cb.checked);
-      save();
-    });
-    const span = document.createElement('span');
-    span.textContent = card.candidate;
-    ci.appendChild(cb);
-    ci.appendChild(span);
-    li.appendChild(ci);
   }
 
   return li;
@@ -441,7 +436,7 @@ function openCardComposer(list, ul, addBtn) {
   const wrap = document.createElement('div');
   wrap.className = 'composer';
   wrap.innerHTML = `
-    <textarea placeholder="Enter a title for this card…" rows="2"></textarea>
+    <textarea placeholder="Enter the calling (position)…" rows="2"></textarea>
     <div class="composer-actions">
       <button class="btn btn-primary add">Add card</button>
       <button class="btn btn-ghost cancel">Cancel</button>
@@ -453,7 +448,7 @@ function openCardComposer(list, ul, addBtn) {
   const commit = () => {
     const val = ta.value.trim();
     if (val) {
-      list.cards.push({ id: uid(), title: val, candidate: '', candidateDone: false, due: null,
+      list.cards.push({ id: uid(), position: val, name: '', due: null,
         watching: false, description: '', labels: [], members: [], checklist: [] });
       save(); render();
     } else close();
@@ -509,19 +504,35 @@ function openCard(cardId) {
 
   modal.innerHTML = '';
 
-  // Title
-  const h2 = document.createElement('input');
-  h2.className = '';
+  // Headline: the proposed person's name.
   const title = document.createElement('h2');
   title.contentEditable = 'true';
-  title.textContent = card.title;
-  title.addEventListener('blur', () => { card.title = title.textContent.trim() || 'Untitled'; save(); });
+  title.dataset.placeholder = 'Add a name…';
+  title.textContent = card.name;
+  title.addEventListener('blur', () => { card.name = title.textContent.trim(); save(); render(); });
   modal.appendChild(title);
 
   const sub = document.createElement('div');
   sub.className = 'sub';
-  sub.textContent = `in list “${list.title}”`;
+  sub.textContent = `${card.position || 'No position set'} · in “${list.title}”`;
   modal.appendChild(sub);
+
+  // Position / calling
+  const posSec = section('Position / Calling');
+  const posRow = document.createElement('div');
+  posRow.className = 'chip-input';
+  const posInput = document.createElement('input');
+  posInput.type = 'text';
+  posInput.placeholder = 'e.g. Nursery Teacher';
+  posInput.value = card.position;
+  posInput.addEventListener('change', () => {
+    card.position = posInput.value.trim() || 'Untitled';
+    save(); render();
+    sub.textContent = `${card.position} · in “${list.title}”`;
+  });
+  posRow.appendChild(posInput);
+  posSec.appendChild(posRow);
+  modal.appendChild(posSec);
 
   // Move to list
   const moveSec = section('List');
@@ -542,19 +553,6 @@ function openCard(cardId) {
   });
   moveSec.appendChild(select);
   modal.appendChild(moveSec);
-
-  // Candidate
-  const candSec = section('Candidate');
-  const candRow = document.createElement('div');
-  candRow.className = 'chip-input';
-  const candInput = document.createElement('input');
-  candInput.type = 'text';
-  candInput.placeholder = 'Name of proposed member…';
-  candInput.value = card.candidate;
-  candInput.addEventListener('change', () => { card.candidate = candInput.value.trim(); save(); render(); });
-  candRow.appendChild(candInput);
-  candSec.appendChild(candRow);
-  modal.appendChild(candSec);
 
   // Description
   const descSec = section('Description');
@@ -674,7 +672,7 @@ function openCard(cardId) {
   del.className = 'btn btn-danger';
   del.textContent = 'Delete card';
   del.addEventListener('click', () => {
-    if (confirm(`Delete card "${card.title}"?`)) {
+    if (confirm(`Delete card "${card.name || card.position}"?`)) {
       list.cards = list.cards.filter(c => c.id !== card.id);
       save(); render(); closeModal();
     }
@@ -736,7 +734,7 @@ $('#reset-btn').addEventListener('click', () => {
     : 'Reset the board to the sample data? This clears your changes.';
   if (confirm(msg)) {
     board = seed();
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(board)); } catch (_) {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(toStorage(board))); } catch (_) {}
     render();
     scheduleRemotePush(true);
   }
@@ -833,7 +831,7 @@ async function pushNow() {
   setStatus('saving');
   try {
     await remote.fns.setDoc(remote.docRef, {
-      board,
+      board: toStorage(board),
       updatedAt: remote.fns.serverTimestamp(),
       updatedBy: APP_VERSION,
     });
@@ -927,11 +925,13 @@ function onRemoteSnapshot(snap) {
   const data = snap.data();
   if (!data || !data.board || !Array.isArray(data.board.lists)) { setStatus('synced'); return; }
 
-  // No visible change → don't disturb the UI (e.g. while typing).
-  if (JSON.stringify(data.board) === JSON.stringify(board)) { setStatus('synced'); return; }
+  // Normalize the incoming shape first, then compare against our current board.
+  // (Compare normalized forms so legacy compat fields don't cause false diffs.)
+  const incoming = normalize(data.board);
+  if (JSON.stringify(incoming) === JSON.stringify(board)) { setStatus('synced'); return; }
 
-  board = normalize(data.board);
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(board)); } catch (_) {}
+  board = incoming;
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(toStorage(board))); } catch (_) {}
   remote.applying = true;
   render();
   // Keep an open card modal in sync if its card still exists.
