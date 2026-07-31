@@ -18,9 +18,11 @@ each past version stays frozen at `/vN`:
   headline and the calling as the subtitle.
 - **`/v4` — Quick advance.** Adds the per-card → button that moves a card to the
   next stage with an inertial glide animation.
-- **`/v5` — Touch drag.** Drag & drop rebuilt on pointer events (works on mobile):
-  long-press to pick up, drop anywhere over a list, edge auto-scroll across
-  columns. The → button is always visible.
+- **`/v5` — Touch drag.** Drag & drop rebuilt on pointer events; → button always
+  visible. (Touch pickup still got canceled by scroll — fixed in v6.)
+- **`/v6` — Mobile drag fix.** Touch drags now driven by touch events so they
+  survive scroll cancellation: long-press to drag, quick-swipe to scroll, drop
+  anywhere over a list.
 
 Every change ships as its own numbered version, so any point in the app's
 history stays reachable at `/vN`.
