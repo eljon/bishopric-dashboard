@@ -16,14 +16,15 @@
    ============================================================ */
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBhU3i9VC_g-x88RUeUoPtbL1hqnl_H6gU",
+  authDomain: "kalayaan-bishopric-dashboard.firebaseapp.com",
+  projectId: "kalayaan-bishopric-dashboard",
+  storageBucket: "kalayaan-bishopric-dashboard.firebasestorage.app",
+  messagingSenderId: "578499475456",
+  appId: "1:578499475456:web:84bc6e9a2bcc0e60d300e5",
 };
 
 /* Optional: pin ONE shared board for everyone who opens the app, ignoring the
-   URL's #b=... id. Leave empty ("") to use per-link secret board IDs instead. */
-export const FIXED_BOARD_ID = "";
+   URL's #b=... id. Leave empty ("") to use per-link secret board IDs instead.
+   Set to a fixed name so the whole bishopric lands on the same board. */
+export const FIXED_BOARD_ID = "kalayaan";
