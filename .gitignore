@@ -1,0 +1,3 @@
+# nothing to build; ignore common cruft
+.DS_Store
+node_modules/

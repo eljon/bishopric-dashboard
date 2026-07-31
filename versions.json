@@ -1,0 +1,6 @@
+{
+  "latest": "v1",
+  "versions": [
+    { "id": "v1", "label": "Version 1", "released": "2026-07-31", "notes": "Initial release: lists, cards, drag & drop, checklists, labels, members, local persistence." }
+  ]
+}
