@@ -1,50 +1,67 @@
 #!/usr/bin/env bash
-# Snapshot the current latest version into a new version folder.
+# Snapshot the CURRENT app (served at the site root, "/") into a frozen
+# version folder /vN, so it stays reachable at that URL forever.
 #
-#   ./new-version.sh v2
+#   ./new-version.sh          # auto-pick the next vN number
+#   ./new-version.sh v3       # explicit
 #
-# This copies the latest version folder (per versions.json) to the new id,
-# then reminds you of the two manual edits needed. The OLD version folder is
-# left untouched, so its URL keeps working forever.
+# Model:
+#   /            → the LATEST app (this is where you edit). Refreshing / always
+#                  loads the newest version.
+#   /v1, /v2 ... → frozen snapshots for reverting. Never edited after release.
+#
+# Typical flow: edit the files at the root → run this to freeze a snapshot →
+# commit & push. The root keeps serving the latest.
 set -euo pipefail
 
+APP_FILES=(index.html app.js styles.css firebase-config.js)
+
+# Ensure we're at the repo root (where index.html + versions.json live).
+if [[ ! -f index.html || ! -f versions.json ]]; then
+  echo "Run this from the repository root (where index.html and versions.json are)."
+  exit 1
+fi
+
+# Determine the new version id.
 NEW="${1:-}"
 if [[ -z "$NEW" ]]; then
-  echo "Usage: ./new-version.sh <new-version-id>   e.g. ./new-version.sh v2"
-  exit 1
+  HIGH=$(ls -d v[0-9]* 2>/dev/null | sed 's/^v//' | sort -n | tail -n1 || true)
+  NEW="v$(( ${HIGH:-0} + 1 ))"
 fi
-
 if [[ ! "$NEW" =~ ^v[0-9]+$ ]]; then
-  echo "Version id should look like v2, v3, ... (got '$NEW')"
-  exit 1
+  echo "Version id should look like v3, v4, ... (got '$NEW')"; exit 1
 fi
-
 if [[ -d "$NEW" ]]; then
-  echo "Folder '$NEW' already exists. Aborting."
-  exit 1
+  echo "Folder '$NEW' already exists. Aborting."; exit 1
 fi
 
-# Determine the current latest version from versions.json (fallback: highest vN dir).
-LATEST=""
-if [[ -f versions.json ]]; then
-  LATEST=$(grep -o '"latest"[[:space:]]*:[[:space:]]*"[^"]*"' versions.json | grep -o 'v[0-9]*' | head -n1 || true)
-fi
-if [[ -z "$LATEST" ]]; then
-  LATEST=$(ls -d v[0-9]* 2>/dev/null | sort -V | tail -n1 || true)
-fi
-if [[ -z "$LATEST" || ! -d "$LATEST" ]]; then
-  echo "Could not find a source version folder to copy. Aborting."
-  exit 1
-fi
+# Freeze the current root app into /vN.
+mkdir "$NEW"
+for f in "${APP_FILES[@]}"; do
+  [[ -f "$f" ]] && cp "$f" "$NEW/$f"
+done
+echo "Snapshotted current root → $NEW/"
 
-cp -r "$LATEST" "$NEW"
-echo "Copied $LATEST/ -> $NEW/"
+# Register it in versions.json and mark it latest (uses node for safe JSON).
+TODAY="$(date +%F 2>/dev/null || echo '')"
+node - "$NEW" "$TODAY" <<'NODE'
+const fs = require('fs');
+const [id, today] = process.argv.slice(2);
+const p = 'versions.json';
+const data = JSON.parse(fs.readFileSync(p, 'utf8'));
+data.versions = data.versions || [];
+if (!data.versions.find(v => v.id === id)) {
+  const n = id.replace(/^v/, '');
+  data.versions.push({ id, label: `Version ${n}`, released: today, notes: 'Snapshot.' });
+}
+data.latest = id;
+fs.writeFileSync(p, JSON.stringify(data, null, 2) + '\n');
+console.log(`versions.json: added ${id}, set latest=${id}.`);
+NODE
+
 echo
-echo "Next steps:"
-echo "  1. Make your changes inside $NEW/"
-echo "  2. In $NEW/app.js set:   const APP_VERSION = '$NEW';"
-echo "  3. In $NEW/index.html update the <title> and the version badge text to $NEW"
-echo "  4. Add $NEW to versions.json and set \"latest\": \"$NEW\""
-echo "  5. git add . && git commit -m 'Release $NEW' && git push"
+echo "Done. Next:"
+echo "  • (optional) edit $NEW's label/notes in versions.json"
+echo "  • git add . && git commit -m 'Release $NEW' && git push"
 echo
-echo "  ($LATEST/ is untouched, so /$LATEST keeps working.)"
+echo "The root (/) still serves the latest app; /$NEW is now a frozen snapshot."

@@ -4,12 +4,14 @@ A lightweight, dependency-free Trello-style board for tracking ward callings
 through their pipeline (Proposal → For Discussion → Contacting → For Interview →
 For Sustaining → For Setting Apart → For Releasing → For Recording → Done).
 
-It is a **static site** — plain HTML/CSS/JS, no build step. There are two
-deployed versions:
+It is a **static site** — plain HTML/CSS/JS, no build step. The root URL `/`
+always serves the **latest** version (refresh `/` and you get the newest), and
+each past version stays frozen at `/vN`:
 
+- **`/` — Latest.** Currently the shared/Firebase build (same as `/v2`).
 - **`/v1` — Local.** Fully self-contained, no external requests. Board data
   lives in the browser's `localStorage` (this device only).
-- **`/v2` — Shared (latest).** Adds a realtime backend
+- **`/v2` — Shared.** Adds a realtime backend
   ([Firebase Firestore](#shared-backend-v2)) so everyone with the secret board
   link sees the same board, live. Falls back to local-only until you add your
   Firebase config.
@@ -85,38 +87,43 @@ editing occasionally; not built for dozens of simultaneous editors.
 
 ## URL-based versioning (revert easily)
 
-Each release is a **frozen, self-contained folder**:
-
 ```
-/            → redirects to the latest version
-/v1/         → Version 1   (this release)
-/v2/         → Version 2   (a future release)
+/            → the LATEST app. Refreshing / always loads the newest version;
+               the URL stays "/". This is where you edit.
+/v1/         → Version 1  (frozen snapshot — local-only)
+/v2/         → Version 2  (frozen snapshot — shared/Firebase)
 versions.json → the manifest of all versions + which one is "latest"
 ```
 
-- The site root always opens the **latest** version.
-- To **revert**, just visit an older version's URL, e.g.
-  `https://<user>.github.io/bishopric-dashboard/v1/`.
-- An in-app **version switcher** (top-right `v1 ▼`) lets you hop between
-  versions without typing URLs.
-- Board **data is shared** across versions (same `localStorage` key), so
-  reverting the code keeps your board. The loader is version-tolerant, so an
-  older version won't choke on data written by a newer one.
+- **The root `/` *is* the latest app** — no redirect. Bookmark `/` and every
+  refresh gives you the newest version, staying at `/`.
+- To **revert**, open an older snapshot's URL, e.g.
+  `https://<user>.github.io/bishopric-dashboard/v1/`. Those folders never
+  change, so they always work.
+- An in-app **version switcher** (top-right badge) lists **Latest** plus every
+  snapshot, so you can hop without typing URLs. It shows `latest` at the root
+  and `vN` inside a snapshot.
+- The app is **location-independent**: the exact same files run at `/` and in
+  any `/vN/` folder (it detects where it is and resolves paths to the site
+  root). So the root is just a mirror of the newest snapshot.
+- Board **data is shared** across versions (same `localStorage` key, same
+  Firestore board), so reverting the code keeps your board. The loader is
+  version-tolerant, so an older version won't choke on newer data.
 
 ## Cutting a new version
 
-When you want to change the app but keep the old ones reachable at `/v1`, `/v2`:
+You edit the app **at the root** (`index.html`, `app.js`, `styles.css`,
+`firebase-config.js`). When you're happy and want to freeze the current state
+as a revertable snapshot:
 
 ```bash
-./new-version.sh v3        # copies the latest version folder → v3/
-# ...make your changes inside v3/ ...
-# then edit v3/app.js: set APP_VERSION = 'v3'
-# and add v3 to versions.json (and set "latest": "v3")
+./new-version.sh            # freezes the current root → /v3 (auto-numbered)
+                            # and updates versions.json (adds v3, latest=v3)
 git add . && git commit -m "Release v3" && git push
 ```
 
-Older version folders stay byte-for-byte as they were — so `/v1` and `/v2`
-always keep working.
+The root keeps serving the latest app; `/v1`, `/v2`, `/v3` … stay byte-for-byte
+frozen, so every old URL keeps working.
 
 ## Hosting on GitHub Pages
 
@@ -137,9 +144,9 @@ The site will be at `https://<user>.github.io/bishopric-dashboard/`.
 
 ```bash
 python3 -m http.server 8000
-# open http://localhost:8000/        (redirects to the latest, /v2/)
-# open http://localhost:8000/v2/     (shared version)
-# open http://localhost:8000/v1/     (local-only version)
+# open http://localhost:8000/        (the latest app — stays at /)
+# open http://localhost:8000/v2/     (v2 snapshot)
+# open http://localhost:8000/v1/     (v1 snapshot, local-only)
 ```
 
 Opening `index.html` via `file://` also works, though a local server matches
