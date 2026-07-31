@@ -1,6 +1,7 @@
 {
-  "latest": "v1",
+  "latest": "v2",
   "versions": [
-    { "id": "v1", "label": "Version 1", "released": "2026-07-31", "notes": "Initial release: lists, cards, drag & drop, checklists, labels, members, local persistence." }
+    { "id": "v1", "label": "Version 1 · Local", "released": "2026-07-31", "notes": "Lists, cards, drag & drop, checklists, labels, members. Data stored locally in the browser (no sync)." },
+    { "id": "v2", "label": "Version 2 · Shared", "released": "2026-07-31", "notes": "Adds a shared realtime backend (Firebase Firestore): live multi-device sync via a secret board link. Falls back to local-only until Firebase is configured." }
   ]
 }
