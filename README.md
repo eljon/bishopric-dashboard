@@ -8,13 +8,19 @@ It is a **static site** — plain HTML/CSS/JS, no build step. The root URL `/`
 always serves the **latest** version (refresh `/` and you get the newest), and
 each past version stays frozen at `/vN`:
 
-- **`/` — Latest.** Currently the shared/Firebase build (same as `/v2`).
+- **`/` — Latest.** Always mirrors the newest version below (currently `/v4`).
 - **`/v1` — Local.** Fully self-contained, no external requests. Board data
   lives in the browser's `localStorage` (this device only).
 - **`/v2` — Shared.** Adds a realtime backend
   ([Firebase Firestore](#shared-backend-v2)) so everyone with the secret board
-  link sees the same board, live. Falls back to local-only until you add your
-  Firebase config.
+  link sees the same board, live. (Original Trello-style card layout.)
+- **`/v3` — Card redesign.** Cards lead with the proposed person's name as the
+  headline and the calling as the subtitle.
+- **`/v4` — Quick advance.** Adds the per-card → button that moves a card to the
+  next stage with an inertial glide animation.
+
+Every change ships as its own numbered version, so any point in the app's
+history stays reachable at `/vN`.
 
 ## Features
 

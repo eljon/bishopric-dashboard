@@ -1,7 +1,9 @@
 {
-  "latest": "v2",
+  "latest": "v4",
   "versions": [
     { "id": "v1", "label": "Version 1 · Local", "released": "2026-07-31", "notes": "Lists, cards, drag & drop, checklists, labels, members. Data stored locally in the browser (no sync)." },
-    { "id": "v2", "label": "Version 2 · Shared", "released": "2026-07-31", "notes": "Adds a shared realtime backend (Firebase Firestore): live multi-device sync via a secret board link. Falls back to local-only until Firebase is configured." }
+    { "id": "v2", "label": "Version 2 · Shared", "released": "2026-07-31", "notes": "Adds a shared realtime backend (Firebase Firestore): live multi-device sync via a secret board link. Original Trello-style card layout (calling as title)." },
+    { "id": "v3", "label": "Version 3 · Card redesign", "released": "2026-07-31", "notes": "Cards now lead with the proposed person's name as the headline and the calling as the subtitle; 'Unassigned' placeholder when no person is set." },
+    { "id": "v4", "label": "Version 4 · Quick advance", "released": "2026-07-31", "notes": "Adds a per-card → button that moves a card to the bottom of the next stage, with an inertial glide animation." }
   ]
 }
