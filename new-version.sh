@@ -59,6 +59,15 @@ fs.writeFileSync(p, JSON.stringify(data, null, 2) + '\n');
 console.log(`versions.json: added ${id}, set latest=${id}.`);
 NODE
 
+# Cache-bust the ROOT's asset URLs (?v=N) so browsers fetch the new files
+# instead of a stale cached copy. (The snapshot's own /vN/ URLs are immutable,
+# so they don't need this.)
+NUM="${NEW#v}"
+if [[ -f index.html ]]; then
+  perl -pi -e "s/(styles\.css|app\.js)\?v=\d+/\$1?v=$NUM/g" index.html
+  echo "index.html: cache-bust query bumped to ?v=$NUM"
+fi
+
 echo
 echo "Done. Next:"
 echo "  • (optional) edit $NEW's label/notes in versions.json"
