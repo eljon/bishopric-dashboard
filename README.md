@@ -23,6 +23,8 @@ each past version stays frozen at `/vN`:
 - **`/v6` — Mobile drag fix.** Touch drags now driven by touch events so they
   survive scroll cancellation: long-press to drag, quick-swipe to scroll, drop
   anywhere over a list.
+- **`/v7` — Double-tap advance.** The → button is gone; **double-tap** (or
+  double-click) a card to advance it to the next stage, **single tap** opens it.
 
 Every change ships as its own numbered version, so any point in the app's
 history stays reachable at `/vN`.
