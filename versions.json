@@ -1,5 +1,5 @@
 {
-  "latest": "v7",
+  "latest": "v8",
   "versions": [
     {
       "id": "v1",
@@ -42,6 +42,12 @@
       "label": "Version 7 · Double-tap advance",
       "released": "2026-08-06",
       "notes": "Removed the → button. Double-tap (or double-click) a card to advance it to the next stage; single tap opens it. Cards no longer double-tap-zoom on mobile."
+    },
+    {
+      "id": "v8",
+      "label": "Version 8 · Snappier tap",
+      "released": "2026-08-06",
+      "notes": "Reduced the single-tap-to-open delay / double-tap window from 260ms to 160ms, so cards open faster (double-tap to advance must be a bit quicker)."
     }
   ]
 }
