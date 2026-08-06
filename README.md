@@ -113,9 +113,8 @@ versions.json → the manifest of all versions + which one is "latest"
 - To **revert**, open an older snapshot's URL, e.g.
   `https://<user>.github.io/bishopric-dashboard/v1/`. Those folders never
   change, so they always work.
-- An in-app **version switcher** (top-right badge) lists **Latest** plus every
-  snapshot, so you can hop without typing URLs. It shows `latest` at the root
-  and `vN` inside a snapshot.
+- The top-right badge shows the **current version number** (the latest `vN` at
+  the root, or the snapshot's own `vN`). To switch versions, edit the URL.
 - The app is **location-independent**: the exact same files run at `/` and in
   any `/vN/` folder (it detects where it is and resolves paths to the site
   root). So the root is just a mirror of the newest snapshot.
