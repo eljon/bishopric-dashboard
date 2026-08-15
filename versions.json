@@ -1,5 +1,5 @@
 {
-  "latest": "v13",
+  "latest": "v14",
   "versions": [
     {
       "id": "v1",
@@ -78,6 +78,12 @@
       "label": "Version 13 · Bottom sheet",
       "released": "2026-08-15",
       "notes": "On phones the card view is now a bottom sheet covering only the lower part of the screen (board dimmed above). Dismiss by pulling it down, tapping the dimmed area, or Close. Desktop keeps the centered dialog."
+    },
+    {
+      "id": "v14",
+      "label": "Version 14 · Simplified cards",
+      "released": "2026-08-15",
+      "notes": "Removed checklists, the watching icon, and the days-in-stage counter/badges from cards and the card modal. The assignee icon moved to the top of the card, aligned with the name."
     }
   ]
 }
