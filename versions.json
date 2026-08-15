@@ -1,5 +1,5 @@
 {
-  "latest": "v28",
+  "latest": "v29",
   "versions": [
     {
       "id": "v1",
@@ -168,6 +168,12 @@
       "label": "Version 28 · iOS wheel picker",
       "released": "2026-08-15",
       "notes": "Rebuilt the interview date/time picker to look and feel like the native iOS wheel picker: three spinning drums (date · hour : minute) with a translucent center selection band and rows that curve and fade at the edges. It's a frosted 'liquid glass' modal — the panel and backdrop are translucent and blurred, so the board stays visible behind it. Cancel/Escape/tap-away dismiss without changes; Done commits (still only on Done, so the reorder animation runs once)."
+    },
+    {
+      "id": "v29",
+      "label": "Version 29 · iOS graphical picker",
+      "released": "2026-08-15",
+      "notes": "Rebuilt the interview picker to match the native iOS graphical date picker: a calendar month grid for the date (‹ › month nav, selected day as a blue circle) and a 'Time' pill that reveals the iOS-style time wheel (hour · minute · AM/PM, real 5-minute steps, translucent center band). It's a dark frosted 'liquid glass' modal, so the board stays visible behind it, with a Reset pill (revert to automatic scheduling) and a blue ✓ to confirm. Nothing commits until ✓ is tapped."
     }
   ]
 }
