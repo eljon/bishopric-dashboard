@@ -1,5 +1,5 @@
 {
-  "latest": "v19",
+  "latest": "v20",
   "versions": [
     {
       "id": "v1",
@@ -114,6 +114,12 @@
       "label": "Version 19 · Combined date-time badge",
       "released": "2026-08-15",
       "notes": "Date and time are now one event-style badge (red month header over day + time) opened by a single datetime-local picker for both. Cleaner design; default time is 11:00 AM."
+    },
+    {
+      "id": "v20",
+      "label": "Version 20 · 24-hour time",
+      "released": "2026-08-15",
+      "notes": "Interview time shows in 24-hour format (e.g. 11:00, 15:30) to save space on the badge."
     }
   ]
 }
