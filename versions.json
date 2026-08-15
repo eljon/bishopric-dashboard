@@ -1,5 +1,5 @@
 {
-  "latest": "v26",
+  "latest": "v27",
   "versions": [
     {
       "id": "v1",
@@ -156,6 +156,12 @@
       "label": "Version 26 · Combined picker + reorder animation",
       "released": "2026-08-15",
       "notes": "Reverted to a single combined date+time picker (one tap opens one picker on mobile and desktop); the picked time is snapped to the nearest 5 minutes. When 'For Interview' re-sorts (e.g. after a time change), the cards animate (FLIP) sliding to their new positions."
+    },
+    {
+      "id": "v27",
+      "label": "Version 27 · Custom 5-min picker",
+      "released": "2026-08-15",
+      "notes": "Reverted the interview badge to the v23 two-column calendar design. Replaced the native inputs with a custom combined date+time picker (calendar month grid + a scrollable list of real 5-minute times, 07:00–21:00) — one tap opens it, it renders as a bottom sheet on phones, and it works correctly on mobile (no more 1-minute snapping). The change is only committed when you tap Done, and the For-Interview reorder animation now plays only after the picker closes and runs more slowly (0.5s)."
     }
   ]
 }
