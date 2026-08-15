@@ -1,5 +1,5 @@
 {
-  "latest": "v23",
+  "latest": "v24",
   "versions": [
     {
       "id": "v1",
@@ -138,6 +138,12 @@
       "label": "Version 23 · 5-min picker",
       "released": "2026-08-15",
       "notes": "The manual date/time picker now steps in 5-minute increments (auto-scheduling still uses 20-minute slots)."
+    },
+    {
+      "id": "v24",
+      "label": "Version 24 · Mobile 5-min time wheel",
+      "released": "2026-08-15",
+      "notes": "iOS ignores the step attribute on time inputs (always 1-minute), so the time is now a native <select> that renders as a wheel of real 5-minute options — works on mobile. The badge's two columns are separate native tap targets: calendar → date picker, clock → 5-minute time wheel (42px targets on touch)."
     }
   ]
 }
