@@ -1,5 +1,5 @@
 {
-  "latest": "v31",
+  "latest": "v32",
   "versions": [
     {
       "id": "v1",
@@ -186,6 +186,12 @@
       "label": "Version 31 · Solid picker surface",
       "released": "2026-08-15",
       "notes": "Made the interview picker panel a solid dark surface so the calendar grid and time wheel read cleanly (the board no longer bleeds through the picker's content). The board is still dimmed and faintly visible around the panel, so it stays a modal you can see behind."
+    },
+    {
+      "id": "v32",
+      "label": "Version 32 · Frosted-glass modal picker",
+      "released": "2026-08-15",
+      "notes": "Reworked the interview picker to match the reference exactly: it's now a centered floating modal (not a full-width bottom sheet); the panel itself is frosted 'liquid glass' that blurs only what's directly behind it while the rest of the board stays sharp (no backdrop blur); and tapping the time makes the time wheel pop up as a floating panel IN FRONT of the calendar instead of expanding below it."
     }
   ]
 }
