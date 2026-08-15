@@ -1,5 +1,5 @@
 {
-  "latest": "v22",
+  "latest": "v23",
   "versions": [
     {
       "id": "v1",
@@ -132,6 +132,12 @@
       "label": "Version 22 · Auto 20-min scheduling",
       "released": "2026-08-15",
       "notes": "Interviews are auto-scheduled in 20-minute slots from 11:00 with no double-booking per interviewer: cards are grouped by assignee + date and given the next free slot (a manually-picked time is kept and reserves its slot). Existing cards are rescheduled accordingly; the picker steps in 20-minute increments."
+    },
+    {
+      "id": "v23",
+      "label": "Version 23 · 5-min picker",
+      "released": "2026-08-15",
+      "notes": "The manual date/time picker now steps in 5-minute increments (auto-scheduling still uses 20-minute slots)."
     }
   ]
 }
