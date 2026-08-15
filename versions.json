@@ -1,5 +1,5 @@
 {
-  "latest": "v16",
+  "latest": "v17",
   "versions": [
     {
       "id": "v1",
@@ -96,6 +96,12 @@
       "label": "Version 16 · Calendar icon",
       "released": "2026-08-15",
       "notes": "The interview date now renders as a mini macOS-Calendar-style icon (red month header + big day number). Clicking/tapping it reliably opens the native date picker (via showPicker)."
+    },
+    {
+      "id": "v17",
+      "label": "Version 17 · Smaller calendar",
+      "released": "2026-08-15",
+      "notes": "The calendar icon is now the same height as the assignee icon (28px desktop / 42px touch) instead of oversized."
     }
   ]
 }
