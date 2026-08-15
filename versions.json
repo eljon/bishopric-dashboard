@@ -1,5 +1,5 @@
 {
-  "latest": "v32",
+  "latest": "v33",
   "versions": [
     {
       "id": "v1",
@@ -192,6 +192,12 @@
       "label": "Version 32 · Frosted-glass modal picker",
       "released": "2026-08-15",
       "notes": "Reworked the interview picker to match the reference exactly: it's now a centered floating modal (not a full-width bottom sheet); the panel itself is frosted 'liquid glass' that blurs only what's directly behind it while the rest of the board stays sharp (no backdrop blur); and tapping the time makes the time wheel pop up as a floating panel IN FRONT of the calendar instead of expanding below it."
+    },
+    {
+      "id": "v33",
+      "label": "Version 33 · Blue time pill",
+      "released": "2026-08-15",
+      "notes": "The interview picker's time value (the 'Time' pill, before it's tapped) is now white text on an iOS-blue background instead of blue text on grey."
     }
   ]
 }
