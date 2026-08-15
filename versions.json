@@ -1,5 +1,5 @@
 {
-  "latest": "v29",
+  "latest": "v30",
   "versions": [
     {
       "id": "v1",
@@ -174,6 +174,12 @@
       "label": "Version 29 · iOS graphical picker",
       "released": "2026-08-15",
       "notes": "Rebuilt the interview picker to match the native iOS graphical date picker: a calendar month grid for the date (‹ › month nav, selected day as a blue circle) and a 'Time' pill that reveals the iOS-style time wheel (hour · minute · AM/PM, real 5-minute steps, translucent center band). It's a dark frosted 'liquid glass' modal, so the board stays visible behind it, with a Reset pill (revert to automatic scheduling) and a blue ✓ to confirm. Nothing commits until ✓ is tapped."
+    },
+    {
+      "id": "v30",
+      "label": "Version 30 · No double-booking",
+      "released": "2026-08-15",
+      "notes": "Fixed interview scheduling so it never double-books a person: previously two cards with the same manually-picked time on the same day for the same interviewer both kept that time (a conflict). Now a colliding pick is automatically bumped to the next free 20-minute slot, and cards without a pick fill the remaining slots — every interviewer's cards get a unique time."
     }
   ]
 }
