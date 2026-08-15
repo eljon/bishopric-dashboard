@@ -1,5 +1,5 @@
 {
-  "latest": "v17",
+  "latest": "v18",
   "versions": [
     {
       "id": "v1",
@@ -102,6 +102,12 @@
       "label": "Version 17 · Smaller calendar",
       "released": "2026-08-15",
       "notes": "The calendar icon is now the same height as the assignee icon (28px desktop / 42px touch) instead of oversized."
+    },
+    {
+      "id": "v18",
+      "label": "Version 18 · Interview time",
+      "released": "2026-08-15",
+      "notes": "Added an interview time (default 9:00 AM) shown next to the calendar icon; tap it for a native time picker. Fixed the date/time pickers not opening on mobile (the transparent input is now the tap target, so the OS picker opens directly). For Interview now sorts by date then time."
     }
   ]
 }
