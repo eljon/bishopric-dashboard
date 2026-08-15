@@ -1,5 +1,5 @@
 {
-  "latest": "v24",
+  "latest": "v25",
   "versions": [
     {
       "id": "v1",
@@ -144,6 +144,12 @@
       "label": "Version 24 · Mobile 5-min time wheel",
       "released": "2026-08-15",
       "notes": "iOS ignores the step attribute on time inputs (always 1-minute), so the time is now a native <select> that renders as a wheel of real 5-minute options — works on mobile. The badge's two columns are separate native tap targets: calendar → date picker, clock → 5-minute time wheel (42px targets on touch)."
+    },
+    {
+      "id": "v25",
+      "label": "Version 25 · Pastel members + Stake",
+      "released": "2026-08-15",
+      "notes": "Each member now has a fixed, distinct pastel avatar color (Eljon blue, John peach, Ace purple, Arvin green, Stake pink) with dark text — no more Eljon/John clash. Added 'Stake' to the roster."
     }
   ]
 }
