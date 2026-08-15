@@ -1,5 +1,5 @@
 {
-  "latest": "v11",
+  "latest": "v12",
   "versions": [
     {
       "id": "v1",
@@ -66,6 +66,12 @@
       "label": "Version 11 · Assignees",
       "released": "2026-08-15",
       "notes": "Roster is now the 4 bishopric members (Eljon Serrano, John Sombrero, Ace Magno, Arvin Navarra). Existing card assignees are cleared once; each card shows a placeholder profile icon — click it (or the modal's Assignee section) to assign one person from the roster."
+    },
+    {
+      "id": "v12",
+      "label": "Version 12 · Mobile-optimized",
+      "released": "2026-08-15",
+      "notes": "Bigger touch targets on phones (assignee icon, header pills, list menu, pickers, checklist boxes all ≈40–44px), near-full-width columns, larger card text, 16px inputs (no iOS zoom), and a de-cluttered header on small screens."
     }
   ]
 }
