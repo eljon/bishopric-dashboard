@@ -1,5 +1,5 @@
 {
-  "latest": "v14",
+  "latest": "v15",
   "versions": [
     {
       "id": "v1",
@@ -84,6 +84,12 @@
       "label": "Version 14 · Simplified cards",
       "released": "2026-08-15",
       "notes": "Removed checklists, the watching icon, and the days-in-stage counter/badges from cards and the card modal. The assignee icon moved to the top of the card, aligned with the name."
+    },
+    {
+      "id": "v15",
+      "label": "Version 15 · Interview dates",
+      "released": "2026-08-15",
+      "notes": "Cards in 'For Interview' get a calendar chip next to the assignee, defaulting to the upcoming Sunday (or today if Sunday). Tap it to pick another date. The list auto-arranges by date, earliest first."
     }
   ]
 }
