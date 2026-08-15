@@ -1,5 +1,5 @@
 {
-  "latest": "v18",
+  "latest": "v19",
   "versions": [
     {
       "id": "v1",
@@ -108,6 +108,12 @@
       "label": "Version 18 · Interview time",
       "released": "2026-08-15",
       "notes": "Added an interview time (default 9:00 AM) shown next to the calendar icon; tap it for a native time picker. Fixed the date/time pickers not opening on mobile (the transparent input is now the tap target, so the OS picker opens directly). For Interview now sorts by date then time."
+    },
+    {
+      "id": "v19",
+      "label": "Version 19 · Combined date-time badge",
+      "released": "2026-08-15",
+      "notes": "Date and time are now one event-style badge (red month header over day + time) opened by a single datetime-local picker for both. Cleaner design; default time is 11:00 AM."
     }
   ]
 }
