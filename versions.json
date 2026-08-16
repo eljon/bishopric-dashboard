@@ -1,5 +1,5 @@
 {
-  "latest": "v44",
+  "latest": "v45",
   "versions": [
     {
       "id": "v1",
@@ -264,6 +264,12 @@
       "label": "Version 44 · Arrows beside the card",
       "released": "2026-08-16",
       "notes": "Reworked the drag arrows so theyre easy to hit: instead of sitting at the far screen edges, the prev/next arrows now appear right beside the picked-up card and follow your finger. A small nudge left or right onto an arrow switches the card to the previous/next list (hold to keep stepping). An arrow dims when there is no list that way."
+    },
+    {
+      "id": "v45",
+      "label": "Version 45 · Flick to switch lists",
+      "released": "2026-08-16",
+      "notes": "Replaced the drag arrows with a flick gesture. While holding a card, flick it left or right and it glides off toward the previous / next list and lands there. The board view stays on the current list (it no longer jumps to the destination). A slow drag still reorders within the list; only a quick horizontal flick switches lists. Also, the board now keeps its horizontal scroll position across updates instead of snapping back to the first list."
     }
   ]
 }
