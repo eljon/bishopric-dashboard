@@ -1,5 +1,5 @@
 {
-  "latest": "v33",
+  "latest": "v34",
   "versions": [
     {
       "id": "v1",
@@ -198,6 +198,12 @@
       "label": "Version 33 · Blue time pill",
       "released": "2026-08-15",
       "notes": "The interview picker's time value (the 'Time' pill, before it's tapped) is now white text on an iOS-blue background instead of blue text on grey."
+    },
+    {
+      "id": "v34",
+      "label": "Version 34 · Release badge",
+      "released": "2026-08-16",
+      "notes": "Cards can now be marked 'for releasing': a red 'Release' badge appears below the assignee icon on the card, toggled by a 'For releasing' checkbox in the card's full view (Status section). The flag is saved with the card and syncs like everything else."
     }
   ]
 }
