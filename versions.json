@@ -1,5 +1,5 @@
 {
-  "latest": "v34",
+  "latest": "v35",
   "versions": [
     {
       "id": "v1",
@@ -204,6 +204,12 @@
       "label": "Version 34 · Release badge",
       "released": "2026-08-16",
       "notes": "Cards can now be marked 'for releasing': a red 'Release' badge appears below the assignee icon on the card, toggled by a 'For releasing' checkbox in the card's full view (Status section). The flag is saved with the card and syncs like everything else."
+    },
+    {
+      "id": "v35",
+      "label": "Version 35 · Release badge polish",
+      "released": "2026-08-16",
+      "notes": "The Release badge is now green (was red) with rounded-rectangle corners (not a pill), and it spans underneath BOTH the calendar and assignee icons in one badge — so the calendar icon stays put whether or not a card is marked for releasing."
     }
   ]
 }
