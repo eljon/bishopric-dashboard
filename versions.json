@@ -1,5 +1,5 @@
 {
-  "latest": "v40",
+  "latest": "v41",
   "versions": [
     {
       "id": "v1",
@@ -240,6 +240,12 @@
       "label": "Version 40 · Always-latest loading",
       "released": "2026-08-16",
       "notes": "Root cause fix for chronically loading an old version: index.html no longer hard-codes the asset version (a cached html would pin stale code). It now fetches versions.json fresh at load and loads styles/app at the LATEST version, so a cached page can never trap you on old code again. Also hardened the add-card fields against browser autofill/prefill (readonly-until-tap + random field names + autocomplete off), on top of the one-card composer design."
+    },
+    {
+      "id": "v41",
+      "label": "Version 41 · Slimmer card view",
+      "released": "2026-08-16",
+      "notes": "Decluttered the full card view: removed the subtitle line under the name, the Position/Calling section, the Description field, the Labels section, and the Assignee section. Moved the For-releasing (Status) toggle above the List dropdown. The card view now shows just the name, the release toggle, the list picker, and delete/close. (Assignee is still set from the icon on the card front.)"
     }
   ]
 }
