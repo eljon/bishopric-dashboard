@@ -1,5 +1,5 @@
 {
-  "latest": "v41",
+  "latest": "v42",
   "versions": [
     {
       "id": "v1",
@@ -246,6 +246,12 @@
       "label": "Version 41 · Slimmer card view",
       "released": "2026-08-16",
       "notes": "Decluttered the full card view: removed the subtitle line under the name, the Position/Calling section, the Description field, the Labels section, and the Assignee section. Moved the For-releasing (Status) toggle above the List dropdown. The card view now shows just the name, the release toggle, the list picker, and delete/close. (Assignee is still set from the icon on the card front.)"
+    },
+    {
+      "id": "v42",
+      "label": "Version 42 · Drag arrows to switch lists",
+      "released": "2026-08-16",
+      "notes": "When you tap-and-hold a card to drag it, big left/right arrows now appear on the screen edges. Drag the card onto the left arrow to send it to the previous list, or the right arrow for the next list (the arrow highlights when active, and holding on it keeps stepping through lists). Release to drop it in that list. Dimmed when there is no list that way."
     }
   ]
 }
