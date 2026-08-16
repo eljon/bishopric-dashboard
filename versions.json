@@ -1,5 +1,5 @@
 {
-  "latest": "v43",
+  "latest": "v44",
   "versions": [
     {
       "id": "v1",
@@ -258,6 +258,12 @@
       "label": "Version 43 · Notes field + calling editor restored",
       "released": "2026-08-16",
       "notes": "Fixes an over-removal in v41: restored the editable calling/position field in the card view (now with no section label, as requested) so it can be edited again, and restored the description field renamed to Notes. Cards with any notes now show a small note icon on the compact card."
+    },
+    {
+      "id": "v44",
+      "label": "Version 44 · Arrows beside the card",
+      "released": "2026-08-16",
+      "notes": "Reworked the drag arrows so theyre easy to hit: instead of sitting at the far screen edges, the prev/next arrows now appear right beside the picked-up card and follow your finger. A small nudge left or right onto an arrow switches the card to the previous/next list (hold to keep stepping). An arrow dims when there is no list that way."
     }
   ]
 }
