@@ -1,5 +1,5 @@
 {
-  "latest": "v37",
+  "latest": "v38",
   "versions": [
     {
       "id": "v1",
@@ -222,6 +222,12 @@
       "label": "Version 37 · Cleaner top bar",
       "released": "2026-08-16",
       "notes": "Removed the Share, Reset, and version buttons from the top bar. The version number now appears in small, subtle text right next to the \"Kalayaan Callings\" title. The Schedule button remains."
+    },
+    {
+      "id": "v38",
+      "label": "Version 38 · Add card asks name + calling",
+      "released": "2026-08-16",
+      "notes": "The \"Add a card\" composer now asks for two things — the person's Name and the Calling (position) — in separate fields, instead of just the calling. Enter in the Name field advances to Calling; Enter there adds the card. Either field alone is enough to create the card."
     }
   ]
 }
