@@ -1,5 +1,5 @@
 {
-  "latest": "v51",
+  "latest": "v52",
   "versions": [
     {
       "id": "v1",
@@ -306,6 +306,12 @@
       "label": "Version 51 · Filter schedule by member",
       "released": "2026-08-20",
       "notes": "The Schedule view now shows the member avatars in a row at the top. Tap one to filter the interview schedule to just that person (the others dim); tap it again to clear and show everyone. Shows an empty note when a member has no interviews."
+    },
+    {
+      "id": "v52",
+      "label": "Version 52 · Pullable schedule sheet",
+      "released": "2026-08-20",
+      "notes": "The Schedule popup now has a fixed height (no longer growing/shrinking with the number of interviews) with the list scrolling inside. On phones it gains a drag handle and can be pulled down to dismiss (a firm pull or quick flick closes it; a small pull snaps back), like the card sheet."
     }
   ]
 }

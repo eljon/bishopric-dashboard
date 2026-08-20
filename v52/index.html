@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalayaan Callings</title>
+  <meta name="description" content="A shared, realtime board for tracking ward callings through their pipeline." />
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>" />
+  <style>
+    /* Minimal pre-paint background so there's no white flash before the real
+       stylesheet loads. */
+    html, body { margin: 0; background: #eef2f7; }
+    @media (prefers-color-scheme: dark) { html, body { background: #1a1f2b; } }
+  </style>
+  <script>
+    // Cache-proof asset loader. A browser (or a home-screen web app) may hold a
+    // stale copy of THIS html for a while, but the app should still be the
+    // latest. So instead of hard-coding app.js?v=NN here (which the stale html
+    // would pin), we fetch versions.json fresh at runtime and load the assets at
+    // whatever the latest version is. In a frozen /vN snapshot there is no
+    // versions.json alongside, so we just load that folder's own files.
+    (function () {
+      function inject(q) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'styles.css' + q;
+        document.head.appendChild(l);
+        function addJs() {
+          var s = document.createElement('script');
+          s.type = 'module';
+          s.src = 'app.js' + q;
+          document.head.appendChild(s);
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', addJs);
+        } else {
+          addJs();
+        }
+      }
+      fetch('versions.json', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) { inject(d && d.latest ? '?v=' + encodeURIComponent(d.latest) : ''); })
+        .catch(function () { inject(''); });
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <span id="board-title" class="board-title" title="Rename board">Kalayaan Callings</span>
+    <span id="version-badge" class="version-inline" title="Version">v8</span>
+    <div class="spacer"></div>
+    <span id="sync-status" class="sync-status" title="Sync status">● Connecting…</span>
+    <div id="top-members" class="members"></div>
+    <button id="calendar-btn" class="pill" title="Interview schedule by Sunday">📅 Schedule</button>
+  </header>
+
+  <main id="board" class="board" aria-label="Callings board"></main>
+
+  <!-- Card detail modal -->
+  <div id="overlay" class="overlay" hidden>
+    <div id="modal" class="modal" role="dialog" aria-modal="true"></div>
+  </div>
+</body>
+</html>
