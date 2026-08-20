@@ -1,5 +1,5 @@
 {
-  "latest": "v52",
+  "latest": "v53",
   "versions": [
     {
       "id": "v1",
@@ -312,6 +312,12 @@
       "label": "Version 52 · Pullable schedule sheet",
       "released": "2026-08-20",
       "notes": "The Schedule popup now has a fixed height (no longer growing/shrinking with the number of interviews) with the list scrolling inside. On phones it gains a drag handle and can be pulled down to dismiss (a firm pull or quick flick closes it; a small pull snaps back), like the card sheet."
+    },
+    {
+      "id": "v53",
+      "label": "Version 53 · Bottom Schedule button on mobile",
+      "released": "2026-08-20",
+      "notes": "On phones the Schedule button now floats as a pill at the bottom-right of the screen, within easy thumb reach, instead of sitting in the top bar. Desktop keeps it in the top bar. The board gets bottom padding so the floating button never covers a list’s Add a card button."
     }
   ]
 }
