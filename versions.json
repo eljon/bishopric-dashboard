@@ -1,5 +1,5 @@
 {
-  "latest": "v46",
+  "latest": "v47",
   "versions": [
     {
       "id": "v1",
@@ -276,6 +276,12 @@
       "label": "Version 46 · Landing wiggle + glow",
       "released": "2026-08-16",
       "notes": "When a flicked card lands in the destination list, it now does a brief wiggle and a blue glow to show it arrived. Timed to when the flying card reaches the list; visible on desktop and when you swipe over to that list on mobile."
+    },
+    {
+      "id": "v47",
+      "label": "Version 47 · Board synced to current state",
+      "released": "2026-08-20",
+      "notes": "Updated the board contents to match the current Trello state: For Discussion, Contacting, For Interview, For Sustaining, For Setting Apart, For Releasing, and For Recording now reflect the real callings and proposed people. Proposal/Pending and Done were left as they were. A seed-revision gate re-seeds the local board once so the update actually loads (assignees left as-is, per request)."
     }
   ]
 }
