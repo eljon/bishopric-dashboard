@@ -1,5 +1,5 @@
 {
-  "latest": "v50",
+  "latest": "v51",
   "versions": [
     {
       "id": "v1",
@@ -300,6 +300,12 @@
       "label": "Version 50 · Last For Recording names",
       "released": "2026-08-20",
       "notes": "Filled in the last three For Recording cards that were below the fold: Janah Serrano and Tina Baradi (Sunday School Teacher) and Leonora Destura (Sunday School Assistant Secretary). Bumped the seed revision so the shared Firebase board refreshes."
+    },
+    {
+      "id": "v51",
+      "label": "Version 51 · Filter schedule by member",
+      "released": "2026-08-20",
+      "notes": "The Schedule view now shows the member avatars in a row at the top. Tap one to filter the interview schedule to just that person (the others dim); tap it again to clear and show everyone. Shows an empty note when a member has no interviews."
     }
   ]
 }
