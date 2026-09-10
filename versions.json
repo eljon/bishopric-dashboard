@@ -1,5 +1,5 @@
 {
-  "latest": "v53",
+  "latest": "v54",
   "versions": [
     {
       "id": "v1",
@@ -318,6 +318,12 @@
       "label": "Version 53 · Bottom Schedule button on mobile",
       "released": "2026-08-20",
       "notes": "On phones the Schedule button now floats as a pill at the bottom-right of the screen, within easy thumb reach, instead of sitting in the top bar. Desktop keeps it in the top bar. The board gets bottom padding so the floating button never covers a list’s Add a card button."
+    },
+    {
+      "id": "v54",
+      "label": "Version 54 · Scheduling for Contacting",
+      "released": "2026-09-10",
+      "notes": "Enabled scheduling on the Contacting list, just like For Interview: its cards now get the date/time badge, conflict-free 20-minute auto-scheduling, date-sorting, and the flick/animation behaviors. The Schedule view now covers both lists (each keeps its own conflict-free times) with a small tag on every row showing which list it is from; renamed to just Schedule."
     }
   ]
 }
