@@ -1,5 +1,5 @@
 {
-  "latest": "v54",
+  "latest": "v55",
   "versions": [
     {
       "id": "v1",
@@ -324,6 +324,12 @@
       "label": "Version 54 · Scheduling for Contacting",
       "released": "2026-09-10",
       "notes": "Enabled scheduling on the Contacting list, just like For Interview: its cards now get the date/time badge, conflict-free 20-minute auto-scheduling, date-sorting, and the flick/animation behaviors. The Schedule view now covers both lists (each keeps its own conflict-free times) with a small tag on every row showing which list it is from; renamed to just Schedule."
+    },
+    {
+      "id": "v55",
+      "label": "Version 55 · Confirmed tag in Schedule",
+      "released": "2026-09-11",
+      "notes": "In the Schedule view, rows from the For Interview list now show a green \"Confirmed\" tag instead of the list name; Contacting rows keep their plain tag."
     }
   ]
 }
